@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
-import { Header } from './components/Header'
+
 import { Home} from './components/Home'
+import { BrowserRouter, Route } from 'react-router-dom';
+import { User} from './components/User'
+import { Header } from "./components/Header"
+
 
 class App extends Component {
     render() {
-        var user = {
-            name: "Inno",
-            hobbies: ["Sports", "Fifa"]
-        };
-        return (<div className="container">
-                    <div className="row">
-                        <div className="col-xs-10 col-xs-offset-1">
-                            <Header/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xs-10 col-xs-offset-1">
-                            <Home name={"Jude"} age={"100"} user={user}>
-                                <p>This is a paragrath</p>
-                            </Home>
-                        </div>
-                    </div>
+        return (
+            <BrowserRouter>
+                <div>
+                    <Header/>
+                    <Route exact path={"/"} component={Home}/>
+                    <Route path={"/user"} component={User}/>
+                    
                 </div>
+           
+            </BrowserRouter>
         );
     }   
 }
